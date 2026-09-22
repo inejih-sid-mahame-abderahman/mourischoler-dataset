@@ -164,6 +164,17 @@
             flex-shrink: 0;
         }
 
+        .nav-item .badge-count {
+            margin-left: auto;
+            background: var(--emerald);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 1px 7px;
+            border-radius: 10px;
+            line-height: 1.6;
+        }
+
         .nav-section {
             font-size: 10px;
             font-weight: 600;
@@ -1037,17 +1048,162 @@
             margin-bottom: 4px;
         }
 
-        /* ========== PRINT ========== */
-        @media print {
-            .sidebar {
-                display: none;
-            }
-            .main {
-                margin-left: 0;
-            }
-            .btn {
-                display: none;
-            }
+        /* ========== MAURITANIAN PAGE SPECIAL STYLES ========== */
+        .mr-hero {
+            background: linear-gradient(135deg, #064e3b 0%, #059669 100%);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mr-hero::after {
+            content: "🇲🇷";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 80px;
+            opacity: 0.15;
+        }
+
+        .mr-hero h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.4px;
+        }
+
+        .mr-hero p {
+            font-size: 13px;
+            opacity: 0.9;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .mr-hero .mr-stat-row {
+            display: flex;
+            gap: 28px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+
+        .mr-hero .mr-stat .mr-stat-value {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .mr-hero .mr-stat .mr-stat-label {
+            font-size: 11px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-top: 2px;
+        }
+
+        .mr-contact-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 12px;
+            border: 1px solid var(--gray-100);
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
+            background: var(--white);
+            transition: all 0.15s;
+            flex-wrap: wrap;
+        }
+
+        .mr-contact-row:hover {
+            border-color: var(--emerald);
+            box-shadow: var(--shadow);
+        }
+
+        .mr-contact-row .mr-contact-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .mr-contact-row .mr-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--emerald-light);
+            color: var(--emerald-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        .mr-contact-row .mr-name {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--gray-800);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .mr-contact-row .mr-meta {
+            font-size: 11px;
+            color: var(--gray-400);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .mr-contact-row .mr-phone {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--emerald-dark);
+            background: var(--emerald-light);
+            padding: 3px 8px;
+            border-radius: 6px;
+            direction: ltr;
+            white-space: nowrap;
+        }
+
+        .mr-contact-row .mr-actions {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .mr-copy-all-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--emerald-light);
+            border: 1px solid #a7f3d0;
+            border-radius: var(--radius-sm);
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .mr-copy-all-bar .mr-copy-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--emerald-dark);
+        }
+
+        .mr-copy-all-bar .mr-copy-sub {
+            font-size: 11px;
+            color: var(--emerald-dark);
+            opacity: 0.75;
+            margin-top: 2px;
         }
     </style>
 </head>
@@ -1077,6 +1233,12 @@
             <button class="nav-item" data-page="leads"><span class="icon">🔥</span> Lead Intelligence</button>
             <button class="nav-item" data-page="crm"><span class="icon">📋</span> CRM / Contacts</button>
             <button class="nav-item" data-page="messages"><span class="icon">💬</span> Messages</button>
+
+            <div class="nav-section">Mauritania 🇲🇷</div>
+            <button class="nav-item" data-page="mauritania">
+                <span class="icon">🇲🇷</span> Mauritanians Only
+                <span class="badge-count" id="mrSidebarCount">0</span>
+            </button>
 
             <div class="nav-section">Data</div>
             <button class="nav-item" data-page="quality"><span class="icon">🔍</span> Data Quality</button>
@@ -1166,6 +1328,11 @@
             <!-- ========== PAGE: MESSAGES ========== -->
             <div class="page hidden" id="page-messages">
                 <div id="messagesContent"></div>
+            </div>
+
+            <!-- ========== PAGE: MAURITANIA ========== -->
+            <div class="page hidden" id="page-mauritania">
+                <div id="mauritaniaContent"></div>
             </div>
 
             <!-- ========== PAGE: QUALITY ========== -->
@@ -1635,6 +1802,63 @@
         ];
 
         // ============================================================
+        // MAURITANIAN DETECTION — the key new function
+        // ============================================================
+        // A record is considered "Mauritanian" if:
+        // 1. Phone starts with +222 (with or without space) — international Mauritanian
+        // 2. Phone is a local 8-digit Mauritanian format starting with 2, 3, or 4
+        // 3. Phone contains "222" as country code prefix in any form
+        function isMauritanian(record) {
+            if (!record || !record.phone) return false;
+            const raw = String(record.phone).trim();
+            if (!raw) return false;
+
+            // Convert Arabic numerals
+            let s = raw.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+
+            // Remove spaces, dashes, parentheses
+            let clean = s.replace(/[\s\-\(\)\.]/g, '');
+
+            // Case 1: starts with +222
+            if (/^\+?222/.test(clean)) return true;
+
+            // Case 2: contains "222" as country code prefix (without +)
+            if (/^222\d{7,8}$/.test(clean)) return true;
+
+            // Case 3: local 8-digit Mauritanian format starting with 2, 3, or 4
+            // Mauritanian mobile numbers: 8 digits, starting with 2, 3, or 4
+            if (/^[234]\d{7}$/.test(clean)) return true;
+
+            // Case 4: handle "222" embedded after + or with spaces like "+222 46 15 98 66"
+            if (/^\+?222/.test(clean)) return true;
+
+            return false;
+        }
+
+        // Get display phone for Mauritanian record
+        function getMauritanianPhone(record) {
+            if (!record || !record.phone) return '';
+            let s = String(record.phone).trim();
+            s = s.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+            return s;
+        }
+
+        // Format WhatsApp link
+        function getWhatsAppLink(record) {
+            if (!record || !record.phone) return '';
+            let s = String(record.phone).trim();
+            s = s.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+            s = s.replace(/[\s\-\(\)\.]/g, '');
+            // Ensure starts with +
+            if (!s.startsWith('+')) {
+                if (s.startsWith('222')) s = '+' + s;
+                else if (/^[234]\d{7}$/.test(s)) s = '+222' + s;
+                else s = '+' + s;
+            }
+            return 'https://wa.me/' + s.replace('+', '');
+        }
+
+        // ============================================================
         // NORMALIZATION HELPERS
         // ============================================================
 
@@ -1721,7 +1945,7 @@
         };
 
         function parsePhone(raw) {
-            const result = { raw: raw || '', cleaned: '', hasCountryCode: false, countryCode: null, country: null, isLocalFormat: false, isValid: false, isMissing: true, signal: 'Missing' };
+            const result = { raw: raw || '', cleaned: '', hasCountryCode: false, countryCode: null, country: null, isLocalFormat: false, isValid: false, isMissing: true, signal: 'Missing', isMauritanian: false };
             if (!raw || !String(raw).trim()) {
                 return result;
             }
@@ -1740,7 +1964,6 @@
             if (s.startsWith('+')) {
                 result.hasCountryCode = true;
                 const num = s.substring(1);
-                // Try matching longest country code first
                 const codes = Object.keys(COUNTRY_CODES).sort((a, b) => b.length - a.length);
                 for (const code of codes) {
                     if (num.startsWith(code)) {
@@ -1748,6 +1971,7 @@
                         result.country = COUNTRY_CODES[code];
                         result.isValid = true;
                         result.signal = COUNTRY_CODES[code];
+                        if (code === '222') result.isMauritanian = true;
                         return result;
                     }
                 }
@@ -1755,7 +1979,6 @@
                 return result;
             }
 
-            // Try to detect country code without +
             const codes = Object.keys(COUNTRY_CODES).sort((a, b) => b.length - a.length);
             for (const code of codes) {
                 if (s.startsWith(code) && s.length > code.length + 4) {
@@ -1764,6 +1987,7 @@
                     result.country = COUNTRY_CODES[code];
                     result.isValid = true;
                     result.signal = COUNTRY_CODES[code] + ' (no +)';
+                    if (code === '222') result.isMauritanian = true;
                     return result;
                 }
             }
@@ -1774,11 +1998,11 @@
                 result.country = 'Mauritania';
                 result.countryCode = '222';
                 result.isValid = true;
+                result.isMauritanian = true;
                 result.signal = 'Mauritania (local format)';
                 return result;
             }
 
-            // Other local formats
             result.signal = 'Local / unclear';
             return result;
         }
@@ -1795,12 +2019,10 @@
             result.isMissing = false;
             let s = String(raw).trim().toLowerCase();
             s = s.replace(/\s+/g, '');
-            // Remove common prefixes/suffixes
             s = s.replace(/^mailto:/, '');
             s = s.replace(/^email:/, '');
             result.normalized = s;
 
-            // Check if it's a phone number or random
             if (/^\+?\d[\d\s\-]{5,}$/.test(s) || /^\d+$/.test(s)) {
                 result.isSuspicious = true;
                 return result;
@@ -1811,7 +2033,6 @@
                 result.isValid = true;
                 result.domain = s.split('@')[1] || '';
             } else {
-                // Try to extract email from text
                 const match = s.match(/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+/);
                 if (match) {
                     result.isValid = true;
@@ -1850,7 +2071,6 @@
             const s = String(raw).trim().toLowerCase();
             const sNorm = normalizeArabic(s);
 
-            // Check for explicit refusal / free-only
             if (/\b(لا ادفع|مش هدفع|لن ادفع|لا أدفع|رفض|free only|no payment|لا املك|ليس لدي مال|ما عندي|مش معايا|ما معي|لا أملك|لا استطيع الدفع|لا أقدر|لا اقدر|لا يوجد مال|ما في مال|ليس عندي|معنديش|معندي|ما عنديش|لا امتلك|مش قادر|مش قادرة|لا يمكنني الدفع)\b/.test(sNorm)) {
                 result.category = 'unable';
                 result.intent = 1;
@@ -1859,7 +2079,6 @@
                 return result;
             }
 
-            // Check for free-only
             if (/\b(مجانا|مجاني|مجاناً|free|بالمجان|دون مقابل|بدون مقابل|هدية)\b/.test(sNorm)) {
                 result.category = 'free_only';
                 result.intent = 0;
@@ -1868,7 +2087,6 @@
                 return result;
             }
 
-            // Check for conditional payment
             if (/\b(بعد القبول|بعد الموافقة|بعد القبول|بعد ما انقبل|اذا انقبلت|إذا انقبلت|بعد النتيجة|after acceptance|if accepted|بعد الحصول على المنحة|بعد ما احصل|conditional)\b/.test(sNorm)) {
                 result.category = 'conditional';
                 result.intent = 3;
@@ -1878,7 +2096,6 @@
                 return result;
             }
 
-            // Check for price sensitive / depends
             if (/\b(على حسب|حسب|depends|معقول|مناسب|قدر|استطاعة|امكانية|في المتناول|affordable|reasonable|small amount|بسيط|قليل|مش كثير|مش كتير)\b/.test(sNorm)) {
                 result.category = 'price_sensitive';
                 result.intent = 2;
@@ -1887,7 +2104,6 @@
                 return result;
             }
 
-            // Check for strong willingness (yes, ready, willing)
             if (/\b(نعم|اكيد|أكيد|مستعد|مستعدة|ready|willing|جاهز|موافق|طبعا|بالتأكيد|sure|yes|اوافق)\b/.test(sNorm)) {
                 result.category = 'strong_willingness';
                 result.intent = 4;
@@ -1896,7 +2112,6 @@
                 return result;
             }
 
-            // Try to extract amount and currency
             const amountPatterns = [
                 { regex: /\$(\d+(?:[.,]\d+)?)/, currency: 'USD', conf: 'high' },
                 { regex: /(\d+(?:[.,]\d+)?)\s*دولار/, currency: 'USD', conf: 'high' },
@@ -1941,7 +2156,6 @@
                 }
             }
 
-            // Try generic number extraction
             const numMatch = s.match(/(\d+(?:[.,]\d+)?)/);
             if (numMatch) {
                 let amtStr = numMatch[1].replace(/,/g, '');
@@ -1958,7 +2172,6 @@
                 }
             }
 
-            // If we got here, it's unclear
             result.category = 'unclear';
             result.intent = 0;
             result.confidence = 'low';
@@ -1975,7 +2188,6 @@
             const s = String(raw);
             const found = new Set();
 
-            // Split by common separators
             const parts = s.split(/[,،\n]+/).map(p => p.trim()).filter(Boolean);
 
             for (const part of parts) {
@@ -1994,7 +2206,7 @@
         }
 
         // ============================================================
-        // EDUCATION NORMALIZER
+        // NORMALIZERS
         // ============================================================
 
         function normalizeEducation(raw) {
@@ -2010,14 +2222,9 @@
             return 'Other';
         }
 
-        // ============================================================
-        // DESTINATION NORMALIZER
-        // ============================================================
-
         function normalizeDestination(raw) {
             if (!raw || !String(raw).trim()) return 'Unknown';
             const s = normalizeText(raw);
-            // Check for multiple destinations - use first match
             for (const [cat, keywords] of Object.entries(CONFIG.destinationMap)) {
                 for (const kw of keywords) {
                     if (s.includes(normalizeText(kw))) {
@@ -2027,10 +2234,6 @@
             }
             return 'Other';
         }
-
-        // ============================================================
-        // PAIN POINT NORMALIZER
-        // ============================================================
 
         function normalizePain(raw) {
             if (!raw || !String(raw).trim()) return 'No stated problem';
@@ -2044,10 +2247,6 @@
             }
             return 'Other';
         }
-
-        // ============================================================
-        // INTEREST NORMALIZER
-        // ============================================================
 
         function normalizeInterest(raw) {
             if (!raw || !String(raw).trim()) return 'Unknown';
@@ -2073,14 +2272,13 @@
                 const painCat = normalizePain(row.pain);
                 const interestCat = normalizeInterest(row.interest);
                 const timestamp = parseTimestamp(row.timestamp);
+                const mauritanian = isMauritanian(row);
 
-                // Contactability
                 let contactability = 'Neither';
                 if (phoneInfo.isValid && emailInfo.isValid) contactability = 'WhatsApp + Email';
                 else if (phoneInfo.isValid) contactability = 'WhatsApp only';
                 else if (emailInfo.isValid) contactability = 'Email only';
 
-                // Segments
                 const segments = [];
                 if (services.includes('Personal guidance') && (paymentInfo.intent >= 3 || paymentInfo.category === 'strong_willingness' || paymentInfo.category === 'explicit_amount')) {
                     segments.push('High-intent personal guidance');
@@ -2091,12 +2289,11 @@
                 if (paymentInfo.category === 'unable' || paymentInfo.category === 'free_only') segments.push('Free-resource seekers');
                 if (paymentInfo.category === 'conditional') segments.push('Conditional payers');
                 if (phoneInfo.country && phoneInfo.country !== 'Mauritania' && phoneInfo.hasCountryCode) segments.push('International applicants');
-                if (phoneInfo.country === 'Mauritania' || phoneInfo.signal === 'Mauritania (local format)') segments.push('Mauritanian audience');
+                if (mauritanian) segments.push('Mauritanian audience');
                 if (educationCat === 'High school student') segments.push('High-school applicants');
                 if (educationCat === 'University student') segments.push('University applicants');
                 if (educationCat === 'Graduate' || educationCat === 'Recent graduate' || educationCat === 'Masters/postgraduate') segments.push('Graduates/postgraduates');
 
-                // Lead priority scoring
                 let leadScore = 0;
                 const leadReasons = [];
 
@@ -2113,7 +2310,6 @@
                 if (destinationCat !== 'Unknown' && destinationCat !== 'Other') { leadScore += 5; leadReasons.push('Clear study destination'); }
                 if (painCat !== 'No stated problem' && painCat !== 'Other') { leadScore += 5; leadReasons.push('Stated clear pain point'); }
 
-                // Urgency detection
                 const urgencyKeywords = ['urgent', 'عاجل', 'مستعجل', 'باقرب وقت', 'as soon as possible', 'اسرع', 'بسرعة', 'الوقت ضيق', 'آخر موعد', 'deadline'];
                 const painNorm = normalizeText(row.pain || '');
                 const goalNorm = normalizeText(row.goal || '');
@@ -2148,7 +2344,8 @@
                     segments,
                     leadScore,
                     leadReasons,
-                    isUrgent
+                    isUrgent,
+                    isMauritanian: mauritanian
                 };
             });
         }
@@ -2244,27 +2441,19 @@
             const f = activeFilters;
             const search = normalizeText(f.search);
             filteredRecords = allRecords.filter(r => {
-                // Education
                 if (f.education && r.educationCategory !== f.education) return false;
-                // Interest
                 if (f.interest && r.interestCategory !== f.interest) return false;
-                // Destination
                 if (f.destination && r.destinationCategory !== f.destination) return false;
-                // Service
                 if (f.service && !(r.services || []).includes(f.service)) return false;
-                // Payment
                 if (f.payment && r.paymentInfo.category !== f.payment) return false;
-                // Contact
                 if (f.contact) {
                     if (f.contact === 'WhatsApp + Email' && r.contactability !== 'WhatsApp + Email') return false;
                     if (f.contact === 'WhatsApp only' && r.contactability !== 'WhatsApp only') return false;
                     if (f.contact === 'Email only' && r.contactability !== 'Email only') return false;
                     if (f.contact === 'Neither' && r.contactability !== 'Neither') return false;
                 }
-                // Date range
                 if (f.dateFrom && r.timestamp && r.timestamp < new Date(f.dateFrom)) return false;
                 if (f.dateTo && r.timestamp && r.timestamp > new Date(f.dateTo + 'T23:59:59')) return false;
-                // Search
                 if (search) {
                     const fields = [
                         r.name, r.phone, r.email, r.goal, r.destinationRaw, r.painRaw,
@@ -2312,7 +2501,7 @@
                 'Destination', 'Pain Point', 'Services', 'Interest',
                 'Payment Category', 'Payment Amount', 'Payment Currency',
                 'Payment Intent', 'Payment Confidence', 'Lead Priority',
-                'Lead Reason', 'Segment', 'Timestamp'
+                'Lead Reason', 'Segment', 'Is Mauritanian', 'Timestamp'
             ];
             const rows = records.map(r => [
                 r.name, r.phone, r.email, r.educationCategory, r.goal,
@@ -2321,7 +2510,7 @@
                 r.paymentInfo?.amount || '', r.paymentInfo?.currency || '',
                 r.paymentInfo?.intent || '', r.paymentInfo?.confidence || '',
                 r.leadScore || 0, (r.leadReasons || []).join('; '),
-                (r.segments || []).join('; '), r.timestampRaw
+                (r.segments || []).join('; '), r.isMauritanian ? 'Yes' : 'No', r.timestampRaw
             ]);
             const csv = [headers, ...rows].map(row =>
                 row.map(cell => {
@@ -2355,7 +2544,6 @@
             const dest = record.destinationCategory || '';
 
             if (isArabic) {
-                // Arabic message
                 let msg = `مرحباً ${name} 👋\n\n`;
                 msg += `اطلعنا على إجابتك في استبيان MouriScholer، `;
                 if (record.interestCategory === 'Yes') {
@@ -2384,7 +2572,6 @@
                 msg += `\n\nفريق MouriScholer`;
                 return msg;
             } else {
-                // English message
                 let msg = `Hello ${name} 👋\n\n`;
                 msg += `We saw your response to the MouriScholer survey, `;
                 if (record.interestCategory === 'Yes') {
@@ -2416,7 +2603,7 @@
         }
 
         // ============================================================
-        // CHART RENDERING (Canvas-based)
+        // CHART RENDERING
         // ============================================================
 
         function renderBarChart(container, data, options = {}) {
@@ -2475,6 +2662,251 @@
         }
 
         // ============================================================
+        // MAURITANIA PAGE — the new dedicated section
+        // ============================================================
+
+        function renderMauritania() {
+            const records = allRecords.filter(r => r.isMauritanian);
+            // Apply global filters on top
+            const f = activeFilters;
+            const search = normalizeText(f.search);
+            const mauritanianRecords = records.filter(r => {
+                if (f.education && r.educationCategory !== f.education) return false;
+                if (f.interest && r.interestCategory !== f.interest) return false;
+                if (f.destination && r.destinationCategory !== f.destination) return false;
+                if (f.service && !(r.services || []).includes(f.service)) return false;
+                if (f.payment && r.paymentInfo.category !== f.payment) return false;
+                if (f.dateFrom && r.timestamp && r.timestamp < new Date(f.dateFrom)) return false;
+                if (f.dateTo && r.timestamp && r.timestamp > new Date(f.dateTo + 'T23:59:59')) return false;
+                if (search) {
+                    const fields = [r.name, r.phone, r.email, r.goal, r.destinationRaw, r.painRaw, r.servicesRaw, r.other, r.amountRaw];
+                    const combined = fields.filter(Boolean).map(x => normalizeText(String(x))).join(' ');
+                    if (!combined.includes(search)) return false;
+                }
+                return true;
+            });
+
+            const total = mauritanianRecords.length;
+
+            if (total === 0) {
+                document.getElementById('mauritaniaContent').innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">🇲🇷</div>
+                        <p>No Mauritanian respondents match the current filters.</p>
+                        <p style="font-size:12px;margin-top:8px;">Mauritanian records are identified by +222 country code or local 8-digit numbers starting with 2, 3, or 4.</p>
+                    </div>`;
+                return;
+            }
+
+            // Demographics
+            const eduCounts = countBy(mauritanianRecords, 'educationCategory');
+            const interestCounts = countBy(mauritanianRecords, 'interestCategory');
+            const destCounts = countBy(mauritanianRecords, 'destinationCategory');
+            const painCounts = countBy(mauritanianRecords, 'painCategory');
+            const serviceCounts = countServices(mauritanianRecords);
+            const paymentCatCounts = {};
+            mauritanianRecords.forEach(r => {
+                const c = r.paymentInfo.category || 'unclear';
+                paymentCatCounts[CONFIG.paymentCategories[c] || c] = (paymentCatCounts[CONFIG.paymentCategories[c] || c] || 0) + 1;
+            });
+
+            const yesCount = interestCounts['Yes'] || 0;
+            const withPhone = mauritanianRecords.filter(r => r.phoneInfo.isValid).length;
+            const explicitAmount = mauritanianRecords.filter(r => r.paymentInfo.category === 'explicit_amount').length;
+            const willingToPay = mauritanianRecords.filter(r => r.paymentInfo.intent >= 3).length;
+            const currencyStats = getCurrencyStats(mauritanianRecords);
+
+            // Top lists
+            const topEdu = Object.entries(eduCounts).sort((a, b) => b[1] - a[1])[0];
+            const topDest = Object.entries(destCounts).filter(([k]) => k !== 'Unknown' && k !== 'Other').sort((a, b) => b[1] - a[1])[0];
+            const topPain = Object.entries(painCounts).filter(([k]) => k !== 'No stated problem' && k !== 'Other').sort((a, b) => b[1] - a[1])[0];
+            const topService = Object.entries(serviceCounts).sort((a, b) => b[1] - a[1])[0];
+
+            // Build full HTML
+            let html = `
+                <div class="mr-hero">
+                    <h2>🇲🇷 Mauritanian Applicants — Full Intelligence</h2>
+                    <p>This section shows every respondent we identified as Mauritanian based on their phone number (+222 country code or local 8-digit format starting with 2, 3, or 4). All statistics below are calculated from this subset only. Use the copy buttons to reach out via WhatsApp directly.</p>
+                    <div class="mr-stat-row">
+                        <div class="mr-stat"><div class="mr-stat-value">${total}</div><div class="mr-stat-label">Total Mauritanians</div></div>
+                        <div class="mr-stat"><div class="mr-stat-value">${yesCount}</div><div class="mr-stat-label">Interested in guidance</div></div>
+                        <div class="mr-stat"><div class="mr-stat-value">${withPhone}</div><div class="mr-stat-label">WhatsApp reachable</div></div>
+                        <div class="mr-stat"><div class="mr-stat-value">${willingToPay}</div><div class="mr-stat-label">Willing to pay (intent ≥ 3)</div></div>
+                        <div class="mr-stat"><div class="mr-stat-value">${explicitAmount}</div><div class="mr-stat-label">Gave explicit amount</div></div>
+                    </div>
+                </div>
+
+                <div class="exec-summary">
+                    <h3>🇲🇷 Executive Summary — Mauritanian Respondents</h3>
+                    <ul>
+                        <li><strong>${total}</strong> respondents identified as Mauritanian from the current filtered set.</li>
+                        ${topEdu ? `<li>Largest education segment: <strong>${topEdu[0]}</strong> (${topEdu[1]} respondents).</li>` : ''}
+                        ${topDest ? `<li>Most requested destination: <strong>${topDest[0]}</strong> (${topDest[1]} respondents).</li>` : ''}
+                        ${topPain ? `<li>Most common pain point: <strong>${topPain[0]}</strong> (${topPain[1]} respondents).</li>` : ''}
+                        ${topService ? `<li>Most requested service: <strong>${topService[0]}</strong> (${topService[1]} respondents).</li>` : ''}
+                        <li><strong>${yesCount}</strong> expressed interest in guidance (${((yesCount / total) * 100).toFixed(1)}%).</li>
+                        <li><strong>${withPhone}</strong> have a valid WhatsApp-reachable phone number.</li>
+                    </ul>
+                </div>
+
+                <div class="grid-2">
+                    <div class="card"><div class="card-header"><h3>Education Distribution</h3></div><div id="mrChartEdu"></div></div>
+                    <div class="card"><div class="card-header"><h3>Interest Level</h3></div><div id="mrChartInterest"></div></div>
+                </div>
+
+                <div class="grid-2 mt-16">
+                    <div class="card"><div class="card-header"><h3>Top Destinations</h3></div><div id="mrChartDest"></div></div>
+                    <div class="card"><div class="card-header"><h3>Top Pain Points</h3></div><div id="mrChartPain"></div></div>
+                </div>
+
+                <div class="grid-2 mt-16">
+                    <div class="card"><div class="card-header"><h3>Service Demand</h3></div><div id="mrChartService"></div></div>
+                    <div class="card"><div class="card-header"><h3>Payment Willingness</h3></div><div id="mrChartPayment"></div></div>
+                </div>
+            `;
+
+            // Currency stats for Mauritanians
+            if (Object.keys(currencyStats).length > 0) {
+                html += `<div class="card mt-16"><div class="card-header"><h3>Currency-Specific Payment Statistics — Mauritanians</h3><span class="sub">Explicit amounts only</span></div>
+                    <div class="table-wrap"><table><thead><tr><th>Currency</th><th>Count</th><th>Min</th><th>Max</th><th>Median</th><th>Mean</th></tr></thead><tbody>`;
+                for (const [cur, st] of Object.entries(currencyStats)) {
+                    html += `<tr><td><strong>${cur}</strong></td><td>${st.count}</td><td>${st.min}</td><td>${st.max}</td><td>${st.median.toFixed(1)}</td><td>${st.mean.toFixed(1)}</td></tr>`;
+                }
+                html += `</tbody></table></div></div>`;
+            }
+
+            // WhatsApp contact list
+            html += `
+                <div class="card mt-16">
+                    <div class="card-header">
+                        <h3>📱 WhatsApp Contact List — Mauritanians</h3>
+                        <span class="sub">${withPhone} reachable contacts</span>
+                    </div>
+                    <div class="mr-copy-all-bar">
+                        <div>
+                            <div class="mr-copy-text">Copy all phone numbers</div>
+                            <div class="mr-copy-sub">Format: name — phone (one per line)</div>
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="copyAllMauritanianPhones()">📋 Copy All Numbers</button>
+                    </div>
+                    <div id="mrContactList"></div>
+                </div>
+            `;
+
+            document.getElementById('mauritaniaContent').innerHTML = html;
+
+            // Render charts
+            renderBarChart(document.getElementById('mrChartEdu'), eduCounts, { color: '#8b5cf6', maxBars: 8 });
+            renderDonut(document.getElementById('mrChartInterest'), interestCounts, ['#059669', '#f59e0b', '#ef4444', '#6b7280']);
+            renderBarChart(document.getElementById('mrChartDest'), destCounts, { color: '#f59e0b', maxBars: 8 });
+            renderBarChart(document.getElementById('mrChartPain'), painCounts, { color: '#ef4444', maxBars: 8 });
+            renderBarChart(document.getElementById('mrChartService'), serviceCounts, { color: '#059669', maxBars: 6 });
+            renderDonut(document.getElementById('mrChartPayment'), paymentCatCounts, ['#059669', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#6b7280']);
+
+            // Render contact list
+            const sortedMr = [...mauritanianRecords].sort((a, b) => (b.leadScore || 0) - (a.leadScore || 0));
+            let contactHtml = '';
+            sortedMr.forEach(r => {
+                const phone = getMauritanianPhone(r);
+                const initials = (r.name || '?').trim().charAt(0).toUpperCase();
+                const hasPhone = r.phoneInfo.isValid;
+                contactHtml += `
+                    <div class="mr-contact-row">
+                        <div class="mr-contact-left">
+                            <div class="mr-avatar">${initials}</div>
+                            <div style="min-width:0;flex:1;">
+                                <div class="mr-name">${r.name || 'Unknown'}</div>
+                                <div class="mr-meta">${r.educationCategory} · ${r.destinationCategory} · Score ${r.leadScore || 0}</div>
+                            </div>
+                        </div>
+                        <div class="mr-phone" data-tooltip="Click to copy">${phone || '—'}</div>
+                        <div class="mr-actions">
+                            ${hasPhone ? `<button class="btn btn-outline btn-sm" onclick="copyMauritanianPhone(${r.index})">📋 Copy</button>` : ''}
+                            ${hasPhone ? `<a class="btn btn-primary btn-sm" href="${getWhatsAppLink(r)}" target="_blank" rel="noopener">💬 WhatsApp</a>` : ''}
+                            <button class="btn btn-outline btn-sm" onclick="openMauritanianProfile(${r.index})">👤 View</button>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('mrContactList').innerHTML = contactHtml;
+        }
+
+        function copyMauritanianPhone(index) {
+            const record = allRecords.find(r => r.index === parseInt(index));
+            if (!record) return;
+            const phone = getMauritanianPhone(record);
+            if (!phone) return;
+            navigator.clipboard.writeText(phone).then(() => {
+                // Show a small toast
+                showToast(`Copied: ${phone}`);
+            }).catch(() => {
+                const ta = document.createElement('textarea');
+                ta.value = phone;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast(`Copied: ${phone}`);
+            });
+        }
+
+        function copyAllMauritanianPhones() {
+            const records = allRecords.filter(r => r.isMauritanian && r.phoneInfo.isValid);
+            const lines = records.map(r => `${r.name || 'Unknown'} — ${getMauritanianPhone(r)}`);
+            const text = lines.join('\n');
+            if (!text) {
+                showToast('No phone numbers to copy');
+                return;
+            }
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(`Copied ${records.length} phone numbers`);
+            }).catch(() => {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast(`Copied ${records.length} phone numbers`);
+            });
+        }
+
+        function openMauritanianProfile(index) {
+            const record = allRecords.find(r => r.index === parseInt(index));
+            if (record) openProfile(record);
+        }
+
+        function showToast(msg) {
+            const existing = document.getElementById('mrToast');
+            if (existing) existing.remove();
+            const toast = document.createElement('div');
+            toast.id = 'mrToast';
+            toast.textContent = msg;
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 24px;
+                right: 24px;
+                background: #064e3b;
+                color: white;
+                padding: 10px 16px;
+                border-radius: 8px;
+                font-size: 13px;
+                font-weight: 500;
+                z-index: 9999;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+                animation: modalIn 0.2s ease;
+                max-width: 320px;
+                direction: auto;
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s';
+                setTimeout(() => toast.remove(), 300);
+            }, 2200);
+        }
+
+        // ============================================================
         // PAGE RENDERERS
         // ============================================================
 
@@ -2504,7 +2936,6 @@
 
             const currencyStats = getCurrencyStats(records);
 
-            // Executive summary
             const eduCounts = countBy(records, 'educationCategory');
             const topEdu = Object.entries(eduCounts).sort((a, b) => b[1] - a[1])[0];
             const destCounts = countBy(records, 'destinationCategory');
@@ -2559,7 +2990,6 @@
 
             document.getElementById('overviewContent').innerHTML = html;
 
-            // Render charts
             renderDonut(document.getElementById('chartInterest'), [
                 { label: 'Yes', value: yesCount },
                 { label: 'Maybe', value: maybeCount },
@@ -2573,7 +3003,6 @@
             });
             renderBarChart(document.getElementById('chartPaymentIntent'), intentCounts, { color: '#3b82f6', maxBars: 6 });
 
-            // Currency table
             const currKeys = Object.keys(currencyStats);
             if (currKeys.length === 0) {
                 document.getElementById('currencyStatsTable').innerHTML = '<div class="empty-state"><p>No explicit currency amounts found.</p></div>';
@@ -2594,9 +3023,6 @@
                 return;
             }
             const eduCounts = countBy(records, 'educationCategory');
-            const total = records.length;
-
-            // Cross-tab: education × interest
             const crossEduInt = {};
             records.forEach(r => {
                 const edu = r.educationCategory;
@@ -2624,7 +3050,6 @@
             document.getElementById('audienceContent').innerHTML = html;
 
             renderBarChart(document.getElementById('chartEdu'), eduCounts, { color: '#8b5cf6' });
-            // Stacked-like bar for interest by education
             const eduLabels = Object.keys(eduCounts).sort((a, b) => eduCounts[b] - eduCounts[a]);
             let interestHtml = '<div class="bar-chart">';
             eduLabels.forEach(edu => {
@@ -2636,7 +3061,6 @@
                 const h = (tot / maxVal) * 100;
                 const yesPct = (yes / tot) * 100;
                 const maybePct = (maybe / tot) * 100;
-                const noPct = (no / tot) * 100;
                 interestHtml += `<div class="bar-wrapper"><div class="bar" style="height:${h}%;background:linear-gradient(to right, #059669 ${yesPct}%, #f59e0b ${yesPct}% ${yesPct + maybePct}%, #ef4444 ${yesPct + maybePct}% 100%);" data-tooltip="${edu}: Yes=${yes}, Maybe=${maybe}, No=${no}"></div><div class="bar-label">${edu}</div></div>`;
             });
             interestHtml += '</div>';
@@ -2649,7 +3073,6 @@
                 document.getElementById('goalsContent').innerHTML = '<div class="empty-state"><div class="icon">🎯</div><p>No records match your filters.</p></div>';
                 return;
             }
-            // Group goals by simple keyword extraction
             const goalKeywords = [
                 'fully funded', 'مموله بالكامل', 'ممولة بالكامل', 'منحة كاملة', 'منحه كامله',
                 'master', 'ماجستير', 'ماستر',
@@ -2690,7 +3113,6 @@
             delete destCounts['Unknown'];
             delete destCounts['Other'];
 
-            const total = records.length;
             let html = `
                 <div class="card"><div class="card-header"><h3>Destination Ranking</h3></div><div id="chartDest"></div></div>
                 <div class="card mt-16"><div class="card-header"><h3>Destination × Payment Willingness</h3></div>
@@ -2719,8 +3141,6 @@
             delete painCounts['No stated problem'];
             delete painCounts['Other'];
 
-            const serviceCounts = countServices(records);
-
             let html = `
                 <div class="card"><div class="card-header"><h3>Pain Point Distribution</h3></div><div id="chartPain"></div></div>
                 <div class="card mt-16"><div class="card-header"><h3>Pain Point × Service Demand</h3><span class="sub">Cross-analysis</span></div>
@@ -2729,7 +3149,6 @@
             document.getElementById('painpointsContent').innerHTML = html;
             renderBarChart(document.getElementById('chartPain'), painCounts, { color: '#ef4444', maxBars: 12 });
 
-            // Cross-tab
             let crossHtml = '<div class="table-wrap"><table><thead><tr><th>Pain Point</th><th>Scholarship DB</th><th>Step-by-step</th><th>App Review</th><th>Personal Guide</th><th>Community</th></tr></thead><tbody>';
             const topPains = Object.entries(painCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
             topPains.forEach(([pain]) => {
@@ -2764,7 +3183,6 @@
             document.getElementById('servicesContent').innerHTML = html;
             renderBarChart(document.getElementById('chartServices'), serviceCounts, { color: '#059669', maxBars: 8 });
 
-            // Service by education
             const edus = [...new Set(records.map(r => r.educationCategory))].filter(e => e !== 'Unknown' && e !== 'Other');
             let eduHtml = '<div class="table-wrap"><table><thead><tr><th>Education</th>';
             const svcKeys = Object.keys(CONFIG.serviceMap);
@@ -2782,7 +3200,6 @@
             eduHtml += '</tbody></table></div>';
             document.getElementById('serviceByEdu').innerHTML = eduHtml;
 
-            // Service by payment
             const paymentCats = ['explicit_amount', 'conditional', 'strong_willingness', 'price_sensitive', 'unable', 'free_only'];
             let payHtml = '<div class="table-wrap"><table><thead><tr><th>Payment Category</th>';
             svcKeys.forEach(s => payHtml += `<th>${s.split(' ')[0]}</th>`);
@@ -2825,7 +3242,6 @@
 
             renderDonut(document.getElementById('chartPaymentCat'), catCounts, ['#059669', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#6b7280', '#14b8a6']);
 
-            // Currency table
             const currKeys = Object.keys(currencyStats);
             if (currKeys.length === 0) {
                 document.getElementById('paymentCurrencyTable').innerHTML = '<div class="empty-state"><p>No explicit currency amounts found.</p></div>';
@@ -2838,7 +3254,6 @@
                 document.getElementById('paymentCurrencyTable').innerHTML = tHtml;
             }
 
-            // Payment intent scores
             const intentCounts = {};
             records.forEach(r => {
                 const i = r.paymentInfo.intent || 0;
@@ -2847,7 +3262,6 @@
             });
             renderBarChart(document.getElementById('chartPaymentScore'), intentCounts, { color: '#8b5cf6', maxBars: 6 });
 
-            // Conditional demand
             const condCount = records.filter(r => r.paymentInfo.category === 'conditional').length;
             const priceSens = records.filter(r => r.paymentInfo.category === 'price_sensitive').length;
             const unable = records.filter(r => r.paymentInfo.category === 'unable').length;
@@ -2912,7 +3326,7 @@
                 const p = r.paymentInfo || {};
                 html += `<tr class="crm-row" data-index="${r.index}" style="cursor:pointer;">
                     <td><span class="badge badge-emerald">${r.leadScore || 0}</span></td>
-                    <td><strong>${r.name}</strong></td>
+                    <td><strong>${r.name}</strong>${r.isMauritanian ? ' 🇲🇷' : ''}</td>
                     <td>${r.educationCategory}</td>
                     <td class="truncate" title="${r.goal}">${r.goal}</td>
                     <td>${r.destinationCategory}</td>
@@ -2934,7 +3348,6 @@
             </div>`;
             document.getElementById('crmContent').innerHTML = html;
 
-            // Event listeners
             document.querySelectorAll('.crm-row').forEach(row => {
                 row.addEventListener('click', function() {
                     const idx = parseInt(this.dataset.index);
@@ -2967,18 +3380,22 @@
         function openProfile(record) {
             const p = record.paymentInfo || {};
             const message = generateMessage(record);
-            const isArabic = /[\u0600-\u06FF]/.test(record.name + record.goal);
+            const phone = getMauritanianPhone(record);
             const modal = document.getElementById('modalContent');
             modal.innerHTML = `
                 <div class="modal-header">
-                    <h3>${record.name}</h3>
+                    <h3>${record.name} ${record.isMauritanian ? '🇲🇷' : ''}</h3>
                     <button class="modal-close" onclick="closeModal()">×</button>
                 </div>
                 <div class="modal-section">
                     <h4>Identity</h4>
-                    <div class="field"><span class="key">Phone:</span> <span class="val">${record.phone || '—'}</span></div>
+                    <div class="field"><span class="key">Phone:</span> <span class="val">${record.phone || '—'}</span>
+                        ${record.phoneInfo.isValid ? `<button class="btn btn-outline btn-sm" style="margin-left:6px;" onclick="copyMauritanianPhone(${record.index})">📋 Copy Phone</button>` : ''}
+                        ${record.phoneInfo.isValid ? `<a class="btn btn-primary btn-sm" style="margin-left:6px;" href="${getWhatsAppLink(record)}" target="_blank" rel="noopener">💬 WhatsApp</a>` : ''}
+                    </div>
                     <div class="field"><span class="key">Email:</span> <span class="val">${record.email || '—'}</span></div>
                     <div class="field"><span class="key">Contactability:</span> <span class="val">${record.contactability}</span></div>
+                    ${record.isMauritanian ? '<div class="field"><span class="key">🇲🇷 Mauritanian:</span> <span class="val" style="color:#059669;font-weight:600;">Yes</span></div>' : ''}
                 </div>
                 <div class="modal-section">
                     <h4>Education</h4>
@@ -3040,16 +3457,15 @@
             if (record) {
                 const msg = generateMessage(record);
                 navigator.clipboard.writeText(msg).then(() => {
-                    alert('Message copied to clipboard');
+                    showToast('Message copied to clipboard');
                 }).catch(() => {
-                    // Fallback
                     const ta = document.createElement('textarea');
                     ta.value = msg;
                     document.body.appendChild(ta);
                     ta.select();
                     document.execCommand('copy');
                     document.body.removeChild(ta);
-                    alert('Message copied');
+                    showToast('Message copied');
                 });
             }
         }
@@ -3067,14 +3483,14 @@
                 const msg = generateMessage(r);
                 html += `<div style="border:1px solid var(--gray-100);border-radius:var(--radius-sm);padding:12px;margin-bottom:12px;">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:6px;">
-                        <strong>${r.name}</strong>
+                        <strong>${r.name} ${r.isMauritanian ? '🇲🇷' : ''}</strong>
                         <span class="badge badge-emerald">Score ${r.leadScore || 0}</span>
                     </div>
                     <div class="text-xs text-muted mb-8">${r.educationCategory} · ${r.destinationCategory} · ${CONFIG.paymentCategories[r.paymentInfo.category] || ''}</div>
                     <div class="message-box">${msg}</div>
                     <div class="flex gap-8 mt-8">
                         <button class="btn btn-outline btn-sm" onclick="copyMessage('${r.index}')">📋 Copy Message</button>
-                        ${r.phone ? `<button class="btn btn-outline btn-sm" onclick="navigator.clipboard.writeText('${r.phone.replace(/'/g, "\\'")}')">📞 Copy Phone</button>` : ''}
+                        ${r.phone ? `<button class="btn btn-outline btn-sm" onclick="copyMauritanianPhone(${r.index})">📞 Copy Phone</button>` : ''}
                         ${r.email && r.emailInfo.isValid ? `<button class="btn btn-outline btn-sm" onclick="navigator.clipboard.writeText('${r.email.replace(/'/g, "\\'")}')">✉️ Copy Email</button>` : ''}
                     </div>
                 </div>`;
@@ -3162,7 +3578,7 @@
             pageRecords.forEach(r => {
                 html += `<tr>
                     <td>${r.index + 1}</td>
-                    <td><strong>${r.name}</strong></td>
+                    <td><strong>${r.name}</strong>${r.isMauritanian ? ' 🇲🇷' : ''}</td>
                     <td class="text-xs">${r.phone || '—'}</td>
                     <td class="text-xs">${r.email || '—'}</td>
                     <td class="text-xs">${r.educationRaw || '—'}</td>
@@ -3203,7 +3619,6 @@
             const total = records.length;
             const paymentStats = getCurrencyStats(records);
 
-            // Build opportunity table
             const opportunities = [
                 { name: 'Free scholarship database', demand: serviceCounts['Scholarship database'] || 0, desc: 'Top-of-funnel acquisition' },
                 { name: 'Scholarship discovery service', demand: serviceCounts['Scholarship database'] || 0, desc: 'Find scholarships matching applicant' },
@@ -3243,7 +3658,6 @@
             });
             html += `</tbody></table></div></div>`;
 
-            // Price strategy
             html += `<div class="card mt-16"><div class="card-header"><h3>Price Strategy Analysis</h3></div>`;
             if (Object.keys(paymentStats).length === 0) {
                 html += '<div class="empty-state"><p>No explicit currency amounts available.</p></div>';
@@ -3276,18 +3690,18 @@
             const topPain = Object.entries(painCounts).filter(([k]) => k !== 'No stated problem' && k !== 'Other').sort((a, b) => b[1] - a[1])[0];
             const serviceCounts = countServices(records);
             const topService = Object.entries(serviceCounts).sort((a, b) => b[1] - a[1])[0];
-            const paymentStats = getCurrencyStats(records);
             const explicitCount = records.filter(r => r.paymentInfo.category === 'explicit_amount').length;
             const conditionalCount = records.filter(r => r.paymentInfo.category === 'conditional').length;
             const unableCount = records.filter(r => r.paymentInfo.category === 'unable').length;
             const contactable = records.filter(r => r.phoneInfo.isValid || r.emailInfo.isValid).length;
+            const mauritanianCount = records.filter(r => r.isMauritanian).length;
 
             let html = `<div class="card">
                 <div class="card-header"><h3>MouriScholer Intelligence Summary</h3></div>
                 <div style="display:flex;flex-direction:column;gap:20px;">
                     <div>
                         <h4 style="font-size:13px;color:var(--emerald-dark);margin-bottom:6px;">👥 Who responded?</h4>
-                        <p style="font-size:13px;">The largest audience segment is <strong>${topEdu ? topEdu[0] : 'Unknown'}</strong> (${topEdu ? topEdu[1] : 0} respondents, ${topEdu ? ((topEdu[1] / total) * 100).toFixed(1) : 0}%). Total respondents: <strong>${total}</strong>.</p>
+                        <p style="font-size:13px;">The largest audience segment is <strong>${topEdu ? topEdu[0] : 'Unknown'}</strong> (${topEdu ? topEdu[1] : 0} respondents, ${topEdu ? ((topEdu[1] / total) * 100).toFixed(1) : 0}%). Total respondents: <strong>${total}</strong>. Mauritanian respondents: <strong>${mauritanianCount}</strong>.</p>
                     </div>
                     <div>
                         <h4 style="font-size:13px;color:var(--emerald-dark);margin-bottom:6px;">🎯 What do they want?</h4>
@@ -3299,34 +3713,18 @@
                     </div>
                     <div>
                         <h4 style="font-size:13px;color:var(--emerald-dark);margin-bottom:6px;">⚠️ What are they struggling with?</h4>
-                        <p style="font-size:13px;">Most common pain point: <strong>${topPain ? topPain[0] : '—'}</strong> (${topPain ? topPain[1] : 0} respondents). This includes difficulty finding scholarships, understanding requirements, and preparing documents.</p>
+                        <p style="font-size:13px;">Most common pain point: <strong>${topPain ? topPain[0] : '—'}</strong> (${topPain ? topPain[1] : 0} respondents).</p>
                     </div>
                     <div>
                         <h4 style="font-size:13px;color:var(--emerald-dark);margin-bottom:6px;">💰 What payment behavior appears?</h4>
-                        <p style="font-size:13px;"><strong>${explicitCount}</strong> respondents gave an explicit amount. <strong>${conditionalCount}</strong> indicated conditional willingness (e.g., after acceptance). <strong>${unableCount}</strong> explicitly stated inability to pay. Survey evidence suggests price sensitivity is significant, with many respondents requesting free or affordable options.</p>
+                        <p style="font-size:13px;"><strong>${explicitCount}</strong> respondents gave an explicit amount. <strong>${conditionalCount}</strong> indicated conditional willingness. <strong>${unableCount}</strong> explicitly stated inability to pay.</p>
                     </div>
                     <div>
                         <h4 style="font-size:13px;color:var(--emerald-dark);margin-bottom:6px;">📞 Who should be contacted?</h4>
-                        <p style="font-size:13px;"><strong>${contactable}</strong> respondents are contactable via WhatsApp or email. High-intent leads (lead score ≥ 50) should be prioritized for personal guidance and application review services.</p>
-                    </div>
-                    <div>
-                        <h4 style="font-size:13px;color:var(--emerald-dark);margin-bottom:6px;">🔬 What should we research next?</h4>
-                        <p style="font-size:13px;">The current form does not tell us: (1) whether respondents would actually pay when asked directly, (2) what specific price points they consider reasonable for each service, (3) how many have successfully obtained scholarships before, (4) what channels they prefer for communication, (5) their timeline/urgency for applying.</p>
+                        <p style="font-size:13px;"><strong>${contactable}</strong> respondents are contactable via WhatsApp or email. The dedicated <strong>🇲🇷 Mauritanians Only</strong> page lists every Mauritanian contact with one-click copy and WhatsApp links.</p>
                     </div>
                 </div>
-            </div>
-            <div class="card mt-16">
-                <div class="card-header"><h3>Content Opportunity Engine</h3></div>
-                <ul style="font-size:13px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
-                    <li>How to find fully funded scholarships — ${serviceCounts['Scholarship database'] || 0} respondents want this</li>
-                    <li>How to understand scholarship requirements — related to pain point "${topPain ? topPain[0] : '—'}"</li>
-                    <li>How to prepare documents — ${painCounts['Documents'] || 0} respondents mentioned this</li>
-                    <li>How to write a motivation letter — ${painCounts['Personal statement / motivation letter'] || 0} respondents mentioned this</li>
-                    <li>How to apply step-by-step — ${serviceCounts['Step-by-step application guides'] || 0} respondents want this</li>
-                    <li>How to avoid scholarship application mistakes — related to pain point "${painCounts['Application process'] || 0} respondents"</li>
-                </ul>
             </div>`;
-
             document.getElementById('nextContent').innerHTML = html;
         }
 
@@ -3345,6 +3743,7 @@
             leads: renderLeads,
             crm: renderCRM,
             messages: renderMessages,
+            mauritania: renderMauritania,
             quality: renderQuality,
             raw: renderRaw,
             product: renderProduct,
@@ -3362,6 +3761,7 @@
             leads: 'Lead Intelligence',
             crm: 'CRM / Contacts',
             messages: 'Message Center',
+            mauritania: '🇲🇷 Mauritanians Only',
             quality: 'Data Quality',
             raw: 'Raw Records',
             product: 'Product Strategy',
@@ -3420,7 +3820,6 @@
         // ============================================================
 
         function bindEvents() {
-            // Navigation
             document.querySelectorAll('.nav-item').forEach(el => {
                 el.addEventListener('click', function() {
                     const page = this.dataset.page;
@@ -3428,12 +3827,10 @@
                 });
             });
 
-            // Menu toggle
             document.getElementById('menuToggle').addEventListener('click', function() {
                 document.getElementById('sidebar').classList.toggle('open');
             });
 
-            // Search
             let searchTimeout;
             document.getElementById('globalSearch').addEventListener('input', function() {
                 clearTimeout(searchTimeout);
@@ -3445,7 +3842,6 @@
                 }, 300);
             });
 
-            // Filters
             const filterIds = ['filterEducation', 'filterInterest', 'filterDestination', 'filterService', 'filterPayment', 'filterContact'];
             filterIds.forEach(id => {
                 document.getElementById(id).addEventListener('change', function() {
@@ -3470,7 +3866,6 @@
                 if (pageRenderers[activePage]) pageRenderers[activePage]();
             });
 
-            // Reset filters
             document.getElementById('resetFilters').addEventListener('click', function() {
                 activeFilters = { education: '', interest: '', destination: '', service: '', payment: '', contact: '', dateFrom: '', dateTo: '', search: '' };
                 document.getElementById('globalSearch').value = '';
@@ -3482,12 +3877,10 @@
                 if (pageRenderers[activePage]) pageRenderers[activePage]();
             });
 
-            // Export
             document.getElementById('exportBtn').addEventListener('click', function() {
                 exportCSV(filteredRecords);
             });
 
-            // Modal close
             document.getElementById('modalOverlay').addEventListener('click', function(e) {
                 if (e.target === this) closeModal();
             });
@@ -3503,10 +3896,16 @@
         function init() {
             allRecords = processRecords(DATA);
             filteredRecords = [...allRecords];
+
+            // Update sidebar count for Mauritanians
+            const mrCount = allRecords.filter(r => r.isMauritanian).length;
+            const mrBadge = document.getElementById('mrSidebarCount');
+            if (mrBadge) mrBadge.textContent = mrCount;
+
             populateFilters();
             bindEvents();
             switchPage('overview');
-            console.log(`MouriScholer: ${allRecords.length} records loaded.`);
+            console.log(`MouriScholer: ${allRecords.length} records loaded, ${mrCount} Mauritanian.`);
         }
 
         window.addEventListener('DOMContentLoaded', init);
